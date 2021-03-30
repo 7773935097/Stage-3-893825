@@ -1,0 +1,112 @@
+-> check whether master is in clean state or not
+
+-> Created a new branch "GitWork"
+    $ git branch GitWork
+
+-> Added hello.html file and added some content to it
+
+-> Added files and Commited the GitWork branch
+    $ git commit -a -m"files added"
+    [GitWork 54401e0] files added
+    2 files changed, 23 insertions(+)
+    create mode 100644 commands.txt
+
+-> checked the status of GitWork branch
+    $ git status
+    On branch GitWork
+    Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+            new file:   commands.txt
+            modified:   hello.html
+
+-> Now switch to master branch
+    $ git checkout master
+    Switched to branch 'master'
+
+-> Added hello.html file and added some different content to it
+
+-> Added files and Commited the master branch
+    $ git commit -a -m"changed some content"
+    [master 974a886] changed some content
+    1 file changed, 10 insertions(+)
+
+-> observing the changes that we made to the files
+    $ git log --oneline --graph --decorate --all
+    * 81dfad9 (HEAD -> master) added some extra content
+    * 974a886 changed some content
+    | * 54401e0 (GitWork) files added
+    |/
+    * 79ceca3 hello.html is added
+
+-> checking the difference between the files before changesand after changes
+    $ git diff
+    diff --git a/commands.txt b/commands.txt
+    index 6feec46..b9b1314 100644
+    --- a/commands.txt
+    +++ b/commands.txt
+    @@ -25,3 +25,10 @@
+        [master 974a886] changed some content
+        1 file changed, 10 insertions(+)
+
+    +-> observing the changes that we made to the files
+    +    $ git log --oneline --graph --decorate --all
+    +    * 81dfad9 (HEAD -> master) added some extra content
+    +    * 974a886 changed some content
+    +    | * 54401e0 (GitWork) files added
+    +    |/
+    +    * 79ceca3 hello.html is added
+-> merging the GitWork branch with master to reflect the changes of GitWork branch to master branch
+    $ git merge GitWork
+    Auto-merging hello.html
+    CONFLICT (content): Merge conflict in hello.html
+    CONFLICT (add/add): Merge conflict in commands.txt
+    Auto-merging commands.txt
+
+-> commited the master branch
+    $ git commit -a -m"commit message"
+    [master 25166e9] commit message
+    1 file changed, 6 insertions(+)
+-> Observe the git status
+    $ git status
+    On branch master
+    nothing to commit, working tree clean
+-> created one backup file and added it in .gitignore file in master branch
+
+-> commited the changes of master
+    $ git commit -a -m"commit message"
+    [master 3a613d4] commit message
+    1 file changed, 1 insertion(+), 1 deletion(-)
+
+-> List of branches available in repository
+    $ git branch
+      GitWork
+    * master
+
+-> Deleting the GitWork branch
+    $ git branch -d GitWork
+    Deleted branch GitWork (was 54401e0).
+
+-> List of branches available in repository
+    $ git branch
+    * master
+-> observe the log (or) changes that we have committed
+    $ git log --oneline --graph --decorate
+    * 79c6780 (HEAD -> master) commit message
+    * 87c7b3e commit message
+    * dd59aa4 commit message
+    * 3a613d4 commit message
+    * bd5c6d2 commit message
+    * 25166e9 commit message
+    *   091c093 ready to merge
+    |\
+    | * 54401e0 files added
+    * | 4c924fe commit message
+    * | 81dfad9 added some extra content
+    * | 974a886 changed some content
+    |/
+    * 79ceca3 hello.html is added
+-> adding origin of the rome repository to local repository
+    $ git remote add origin https://gitlab.com/shaikabidali03/stage.git
+
+-> pushing the local repository to remote repository
+    $ git push -u origin master
