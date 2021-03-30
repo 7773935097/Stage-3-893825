@@ -1,0 +1,53 @@
+->  created two files - text.txt ,sample.txt and commands.txt
+
+->  added to the branch
+	$ git add .
+
+->  checked the status
+	$ git status
+	On branch master
+	Your branch is up to date with 'origin/master'.
+
+	Changes to be committed:
+  	   (use "git restore --staged <file>..." to unstage)
+        	new file:   commands_used.txt
+        	new file:   sample.txt
+        	new file:   text.txt
+
+-> created a new branch "GitNewBranch"
+	$ git branch GitNewBranch
+
+-> Switched to new branch 
+	$ git checkout GitNewBranch
+	Switched to branch 'GitNewBranch'
+
+-> added all files of master to 'GitNewBranch' branch and also did some changes in 'GitNewBranch' branch
+-> added the changed files to the 'GitNewBranch' branch using
+	$ git add .
+-> Commited the branch
+	$ git commit -m "fixed the bugs"
+	[GItNewBranch 93ba545] fixed the bugs
+ 	3 files changed, 22 insertions(+)
+ 	create mode 100644 894566-git/894566-git-hands-on's-3/commands_used.txt
+ 	create mode 100644 894566-git/894566-git-hands-on's-3/sample.txt
+ 	gitcreate mode 100644 894566-git/894566-git-hands-on's-3/text.txt
+
+-> Now we are merging the GitNewBranch branch with master branch with the help of below command
+	$ git merge GitNewBranch
+
+-> check whether the branches are merged or not
+	$ git status
+	On branch master
+	Changes to be committed:
+       	  (use "git restore --staged <file>..." to unstage)
+
+
+-> delete the GitNewBranch from the repositary
+	
+	$ git branch -d GitNewBranch
+	gitDeleted branch GitNewBranch (was 437be78).
+-> check the master branch status 
+	$ git status
+	On branch master
+	nothing to commit, working tree clean
+
