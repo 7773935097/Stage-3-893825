@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dept1" class="com.cognizant.springlearn2.model.Department" scope="prototype">
+		<property name="id" value="Dept1" />
+		<property name="name" value="Java" />
+		<property name="location" value="ATP" />
+	</bean>
+	<bean id="dept2" class="com.cognizant.springlearn2.model.Department" scope="prototype">
+		<property name="id" value="Dept2" />
+		<property name="name" value="DotNet" />
+		<property name="location" value="OTP" />
+	</bean>
+	<bean id="dept3" class="com.cognizant.springlearn2.model.Department" scope="prototype">
+		<property name="id" value="Dept3" />
+		<property name="name" value="C++" />
+		<property name="location" value="HTTP" />
+	</bean>
+	
+	<bean id="emp1" class="com.cognizant.springlearn2.model.Employee" scope="prototype">
+		<property name="id" value="Emp1" />
+		<property name="name" value="Dharma Raju" />
+		<property name="department" ref="dept1" />
+	</bean>
+	<bean id="emp2" class="com.cognizant.springlearn2.model.Employee" scope="prototype">
+		<property name="id" value="Emp2" />
+		<property name="name" value="Bheemudu" />
+		<property name="department" ref="dept2" />
+	</bean>
+	<bean id="emp3" class="com.cognizant.springlearn2.model.Employee" scope="prototype">
+		<property name="id" value="Emp3" />
+		<property name="name" value="Arjunudu" />
+		<property name="department" ref="dept1" />
+	</bean>
+	<bean id="emp4" class="com.cognizant.springlearn2.model.Employee" scope="prototype">
+		<property name="id" value="Emp4" />
+		<property name="name" value="Nakuludu" />
+		<property name="department" ref="dept3" />
+	</bean>
+	<bean id="emp5" class="com.cognizant.springlearn2.model.Employee" scope="prototype">
+		<property name="id" value="Emp5" />
+		<property name="name" value="Sahadevudu" />
+		<property name="department" ref="dept3" />
+	</bean>
+	<bean id="employeeList" class="java.util.ArrayList">
+	<constructor-arg>
+		<list>
+				<ref bean="emp1"></ref>
+				<ref bean="emp2"></ref>
+				<ref bean="emp3"></ref>
+				<ref bean="emp4"></ref>
+				<ref bean="emp5"></ref>
+		</list>
+	</constructor-arg>
+	</bean>
+	<bean id="departmentList" class="java.util.ArrayList">
+	<constructor-arg>
+		<list>
+			<ref bean="dept1"></ref>
+			<ref bean="dept2"></ref>
+			<ref bean="dept3"></ref>
+		</list>
+	</constructor-arg>
+	</bean>
+</beans>

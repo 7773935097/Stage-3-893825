@@ -1,0 +1,80 @@
+Objectives
+
+  · Demonstrate integration of RESTful Web Service of type GET and test the service-using postman.
+
+    o REST Web Service architecture with Controller, Service and Dao, service methods.
+
+Hands-on 1
+
+Problem Statement - Display Employee List and Edit Employee Details using RESTful Web Service This service should be developed to get the data from RESTful Web Service developed in Spring. The following are the high-level activities that needs to be done to accomplish this:
+
+  · Create static employee list data using spring xml configuration
+
+  · Create a REST Service that reads data from xml configuration and returns it
+
+NOTE: There is no specific activity as part of this hands on, refer the next hands-on’s that covers above three activities in detail.
+
+Create static employee list data using spring xml configuration Follow steps below to accomplish this activity:
+
+  · Incorporate the following in employee.xml:
+
+    o Create one or two more departments
+
+    o Create four more instances of Employee. (use employee sample data from angular)
+
+    o Reuse existing skills instead of creating new ones
+
+    o Include all four employee instances in an ArrayList.
+
+  · In EmployeeDao, incorporate the following:
+
+    o Create static variable with name EMPLOYEE_LIST of type ArrayList<Employee>
+
+    o Include constructor that reads employee list from xml config and set the EMPLOYEE_LIST
+
+    o Create method getAllEmployees() that returns the EMPLOYEE_LIST
+
+Create REST service to gets all employees Follow steps below to accomplish this activity:
+
+  · In EmployeeService, incorporate the following:
+
+    o Change the annotation for this class from @Component to @Service
+
+    o Create method getAllEmployees() that invokes employeeDao.getAllEmployees() and return the employee list
+
+    o Define @Transactional annotation for this method.
+
+  · In EmployeeController, incorporate the following:
+
+    o Include a new get method with name getAllEmployees() that returns the employee list
+
+    o Mark this method as GetMapping annotation with the URL as '/employees'
+
+    o Within this method invoke employeeService.getAllEmployees() and return the same.
+
+  · Test the service using postman.
+Hands-on 2
+
+Create REST service for department
+
+Create a new service to get all the departments.
+
+Follow steps below to achieve this:
+
+  · Create a new REST Service, define below list of classes and respective methods:
+
+    o DepartmentController
+
+      § getAllDepartments() with URL "/departments", this method will return array of departments
+
+    o DepartmentService
+
+      § getAllDepartments()
+
+    o DepartmentDao
+
+      § getAllDepartments() - Create a static variable DEPARTMENT_LIST, this should be populated from spring xml configuration
+
+  · Test the service using postman.
+
+  · Also verify if department REST service is called by looking into the logs
